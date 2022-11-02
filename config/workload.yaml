@@ -4,15 +4,16 @@ metadata:
   name: tanzu-java-web-app
   labels:
     apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/has-tests: true
     app.kubernetes.io/part-of: tanzu-java-web-app
 spec:
   params:
-  - name: annotations
+  - name: testing_pipeline_matching_labels 
     value:
-      autoscaling.knative.dev/minScale: "1"
+      apps.tanzu.vmware.com/pipeline: test
+      apps.tanzu.vmware.com/language: java
   source:
     git:
       ref:
         branch: main
-      url: https://github.com/vmware-tanzu/application-accelerator-samples.git
-    subPath: tanzu-java-web-app
+      url: https://github.com/billglover/tap-accelerator-java-web-app.git
